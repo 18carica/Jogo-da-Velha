@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/JogoDaVelha/assests/css/jogodavelha.css">
+    <title>Jogo da Velha</title>
+</head>
+
+<body>
+
+    <div class="modoDeJogo">
+        <button class="PvP" onclick="ModoDeJogo(1)">2 Jogadores</button>
+        <button class="PvC" id="vsComputerButton" onclick="ModoDeJogo(2)">VS Computador</button>
+    </div>
+
+    <div class="mostrarJogadorAtual">
+        <h3 id="jogadorAtual"></h3>
+    </div>
+
+    <div class="container">
+        <div class="side-panel-1" id="side-panel-1">
+            <label for="player1" id="saida1">Jogador 1:</label>
+            <input type="text" id="player1" placeholder="Nome do Jogador 1">
+            <span id="player1-wins">Vitórias: 0</span>
+            <button class="PvP" id="cadastro1" onclick="cadastrarJogador(1)">Cadastrar</button>
+        </div>
+
+        <div id="game-board">
+            <div class="cell" onclick="cellClick(this, 0)"></div>
+            <div class="cell" onclick="cellClick(this, 1)"></div>
+            <div class="cell" onclick="cellClick(this, 2)"></div>
+            <div class="cell" onclick="cellClick(this, 3)"></div>
+            <div class="cell" onclick="cellClick(this, 4)"></div>
+            <div class="cell" onclick="cellClick(this, 5)"></div>
+            <div class="cell" onclick="cellClick(this, 6)"></div>
+            <div class="cell" onclick="cellClick(this, 7)"></div>
+            <div class="cell" onclick="cellClick(this, 8)"></div>
+        </div>
+
+        <div class="side-panel-2" id="side-panel-2">
+            <label for="player2" id="saida2">Jogador 2:</label>
+            <input type="text" id="player2" placeholder="Nome do Jogador 2">
+            <span id="player2-wins">Vitórias: 0</span>
+            <button class="PvP" id="cadastro2" onclick="cadastrarJogador(2)">Cadastrar</button>
+        </div>
+
+        <div class="reset">
+            <button class="PvP" type="submit">Reiniciar</button>
+        </div>
+    </div>
+    <script src="/JogoDaVelha/assests/js/jogodavelha.js"></script>
+</body>
+
+</html>

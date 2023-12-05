@@ -1,0 +1,255 @@
+body {
+  font-family: "Roboto", sans-serif;
+  min-height: 100%;
+  background-image: url(/JogoDaVelha/assests/img/jg1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.modoDeJogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 300px;
+}
+
+.modoDeJogo button {
+  margin: 15px;
+}
+
+.reset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 300px;
+}
+
+.reset button {
+  margin: 15px;
+}
+
+.mostrarJogadorAtual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+}
+
+.side-panel-1 {
+  text-align: center;
+  padding: 30px;
+  visibility: hidden;
+}
+
+.side-panel-2 {
+  text-align: center;
+  padding: 30px;
+  visibility: hidden;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  font-size: 100px;
+  cursor: pointer;
+  border: 4px solid #fff;
+  /* Adicionando uma borda branca para separar as células */
+}
+
+.PvP {
+  width: 220px;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.PvP:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+.PvP:active {
+  color: #000;
+}
+
+.PvP:active:after {
+  background: transparent;
+}
+
+.PvP:hover:before {
+  opacity: 1;
+}
+
+.PvP:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.PvC {
+  width: 220px;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.PvC:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+.PvC:active {
+  color: #000;
+}
+
+.PvC:active:after {
+  background: transparent;
+}
+
+.PvC:hover:before {
+  opacity: 1;
+}
+
+.PvC:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+#player1-wins,
+#player2-wins {
+  display: block;
+  margin-top: 5px;
+}
