@@ -102,7 +102,7 @@ function makeComputerMove() {
     }
 }
 
-// Função para verificar se há um vencedor
+
 function checkWinner() {
     const cells = document.querySelectorAll('.cell');
     const winningCombinations = [

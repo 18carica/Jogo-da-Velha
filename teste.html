@@ -21,7 +21,7 @@
         body {
             font-family: 'Roboto', sans-serif;
             min-height: 100%;
-            background-image: url(/JogoDaVelha/assests/img/jg1.jpg);
+            background-image: url(assests/img/jg1.jpg);
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
@@ -33,6 +33,8 @@
             align-items: center;
             max-width: 800px;
             margin: 0 auto;
+            font-size: large;
+            font-weight: bold;
         }
 
         .modoDeJogo {
@@ -300,7 +302,7 @@
     </div>
 
     <script>
-
+        // Variáveis para controlar o estado do jogo
         let currentPlayer = 'X';
         let player1Wins = 0;
         let player2Wins = 0;
@@ -365,7 +367,7 @@
         function mostrarJogadorAtual() {
             document.getElementById('jogadorAtual').innerHTML = 'Jogador atual: ' + currentPlayer;
         }
-
+// Função para lidar com um clique em uma célula do tabuleiro
         function cellClick(cell) {
             if (cell.innerText === '' && !checkWinner()) {
                 cell.innerText = currentPlayer;
@@ -384,7 +386,7 @@
                 }
             }
         }
-
+        // Função para realizar a jogada do computador (ainda não funciona)
         function makeComputerMove() {
             const emptyCells = document.querySelectorAll('.cell:not(:disabled):empty');
 
@@ -438,7 +440,7 @@
                 document.getElementById('player2-wins').innerText = `${player2Name} Vitórias: ${player2Wins}`;
             }
         }
-
+        // Função para resetar o tabuleiro após uma partida
         function resetBoard() {
             const cells = document.querySelectorAll('.cell');
             cells.forEach(cell => cell.innerText = '');
