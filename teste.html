@@ -368,8 +368,7 @@ function cellClick(cell) {
                 currentPlayer = 'O';
             } else {
                 currentPlayer = 'X';
-                // PC
-                // makeComputerMove();
+                makeComputerMove();
             }
         }
     }
@@ -380,6 +379,7 @@ function makeComputerMove() {
 
     if (emptyCells.length > 0) {
         const randomIndex = Math.floor(Math.random() * emptyCells.length);
+        
         const randomCell = emptyCells[randomIndex];
         randomCell.innerText = currentPlayer;
         if (checkWinner()) {
@@ -387,7 +387,7 @@ function makeComputerMove() {
             resetBoard();
         } else {
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-            mostrarJogadorAtual(); // Adicionei para mostrar o jogador atual após a jogada do computador
+            //mostrarJogadorAtual(); // Adicionei para mostrar o jogador atual após a jogada do computador
         }
     }
 }
