@@ -302,7 +302,7 @@
     </div>
 
     <script>
-       // Variáveis para controlar o estado do jogo
+// Variáveis para controlar o estado do jogo
 let currentPlayer = 'X';
 let player1Wins = 0;
 let player2Wins = 0;
@@ -368,7 +368,8 @@ function cellClick(cell) {
                 currentPlayer = 'O';
             } else {
                 currentPlayer = 'X';
-                //makeComputerMove();
+                // PC
+                // makeComputerMove();
             }
         }
     }
@@ -379,7 +380,6 @@ function makeComputerMove() {
 
     if (emptyCells.length > 0) {
         const randomIndex = Math.floor(Math.random() * emptyCells.length);
-        
         const randomCell = emptyCells[randomIndex];
         randomCell.innerText = currentPlayer;
         if (checkWinner()) {
@@ -387,7 +387,7 @@ function makeComputerMove() {
             resetBoard();
         } else {
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-            //mostrarJogadorAtual(); // Adicionei para mostrar o jogador atual após a jogada do computador
+            mostrarJogadorAtual(); // Adicionei para mostrar o jogador atual após a jogada do computador
         }
     }
 }
@@ -413,11 +413,11 @@ function checkWinner() {
 function updateWinner() {
     const winner = currentPlayer === 'X' ? 'O' : 'X';
     if (winner === 'X') {
-        player1Wins++;
-        document.getElementById('player1-wins').innerText = `${player1Name}Vitórias ${player1Wins}`;
-    } else {
         player2Wins++;
-        document.getElementById('player2-wins').innerText = `${player2Name}Vitórias ${player2Wins}`;
+        document.getElementById('player2-wins').innerText = `${player1Name} Vitórias: ${player1Wins}`;
+    } else {
+        player1Wins++;
+        document.getElementById('player1-wins').innerText = `${player2Name} Vitórias: ${player2Wins}`;
     }
 }
 // Função para resetar o tabuleiro após uma partida
@@ -434,6 +434,8 @@ function resetPlacar() {
 }
 // Associe a função ao evento de clique do botão "Reiniciar"
 document.querySelector('.reset button').addEventListener('click', resetPlacar);
+
+
     </script>
 </body>
 

@@ -109,10 +109,10 @@ function checkWinner() {
 function updateWinner() {
     const winner = currentPlayer === 'X' ? 'O' : 'X';
     if (winner === 'X') {
-        player1Wins++;
+        player2Wins++;
         document.getElementById('player1-wins').innerText = `${player1Name}Vitórias ${player1Wins}`;
     } else {
-        player2Wins++;
+        player1Wins++;
         document.getElementById('player2-wins').innerText = `${player2Name}Vitórias ${player2Wins}`;
     }
 }
