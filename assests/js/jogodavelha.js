@@ -128,7 +128,7 @@ function updateWinner() {
     if (jogador2 && currentPlayer === 'X') {
         // Modo "VS Computador" - jogador humano vence
         player1Wins++;
-        document.getElementById('player1-wins').innerText = `${player1Name} Vitórias: ${player1Wins}`;
+        document.getElementById('player2-wins').innerText = `${player1Name} Vitórias: ${player1Wins}`;
     } else if (jogador2 && currentPlayer === 'O') {
         // Modo "VS Computador" - computador vence
         player2Wins++;
@@ -136,11 +136,11 @@ function updateWinner() {
     } else if (!jogador2 && winner === 'X') {
         // Modo 2 jogadores - jogador 1 vence
         player1Wins++;
-        document.getElementById('player1-wins').innerText = `${player1Name} Vitórias: ${player1Wins}`;
+        document.getElementById('player2-wins').innerText = `${player1Name} Vitórias: ${player1Wins}`;
     } else if (!jogador2 && winner === 'O') {
         // Modo 2 jogadores - jogador 2 vence
         player2Wins++;
-        document.getElementById('player2-wins').innerText = `${player2Name} Vitórias: ${player2Wins}`;
+        document.getElementById('player1-wins').innerText = `${player2Name} Vitórias: ${player2Wins}`;
     }
 }
 // Função para resetar o tabuleiro após uma partida
