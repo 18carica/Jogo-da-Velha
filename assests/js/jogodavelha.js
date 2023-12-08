@@ -128,7 +128,7 @@ function updateWinner() {
     if (jogador2 && currentPlayer === 'X') {
         // Modo "VS Computador" - jogador humano vence
         player1Wins++;
-        document.getElementById('player2-wins').innerText = `${player1Name} Vitórias: ${player1Wins}`;
+        document.getElementById('player1-wins').innerText = `${player1Name} Vitórias: ${player1Wins}`;
     } else if (jogador2 && currentPlayer === 'O') {
         // Modo "VS Computador" - computador vence
         player2Wins++;
