@@ -11,7 +11,7 @@ let jogadorCadastrado = false;
 let jogador2 = false;
 // Esconde game-board 
 document.getElementById("game-board").style.visibility = 'hidden';
-// Função para cadastrar um jogador com base no número do jogador
+// Função para cadastrar um jogador 
 function cadastrarJogador(jogador) {
     if (jogador == 1) {
         var elementoJogador = document.getElementById("player1");
@@ -28,6 +28,7 @@ function cadastrarJogador(jogador) {
     }
     mostrarJogadorAtual();
 }
+// Função modeo de jogo
 function ModoDeJogo(modoJogo) {
     var panel1 = document.getElementById("side-panel-1");
     var panel2 = document.getElementById("side-panel-2");
