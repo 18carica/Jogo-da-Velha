@@ -1,55 +1,76 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
+    <!-- CSS -->
     <link rel="stylesheet" href="./assests/css/jogodavelha.css">
-    <title>Jogo da Velha</title>
-</head>
 
-<body>
+    <!-- Normalize CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
+    <!-- Font Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
     <div class="modoDeJogo">
-        <button class="PvP" onclick="ModoDeJogo(1)">2 Jogadores</button>
-        <button class="PvC" id="vsComputerButton" onclick="ModoDeJogo(2)">VS Computador</button>
+      <button class="PvP" onclick="ModoDeJogo(1)">2 Jogadores</button>
+      <button class="PvC" onclick="ModoDeJogo(2)">VS Computador</button>
     </div>
 
     <div class="mostrarJogadorAtual">
-        <h3 id="jogadorAtual"></h3>
+      <h3 id="jogadorAtual"></h3>
     </div>
 
     <div class="container">
-        <div class="side-panel-1" id="side-panel-1">
-            <label for="player1" id="saida1">Jogador 1:</label>
-            <input type="text" id="player1" placeholder="Nome do Jogador 1">
-            <span id="player1-wins">Vitórias: 0</span>
-            <button class="PvP" id="cadastro1" onclick="cadastrarJogador(1)">Cadastrar</button>
-        </div>
+      <div class="side-panel-1" id="side-panel-1">
+        <label for="player1" id="saida1">Jogador 1:</label>
+        <input type="text" id="player1" placeholder="Nome do Jogador 1" />
+        <span id="player1-wins">Vitórias: 0</span>
+        <button class="PvP" id="cadastro1" onclick="cadastrarJogador(1)">
+          Cadastrar
+        </button>
+      </div>
 
-        <div id="game-board">
-            <div class="cell" onclick="cellClick(this, 0)"></div>
-            <div class="cell" onclick="cellClick(this, 1)"></div>
-            <div class="cell" onclick="cellClick(this, 2)"></div>
-            <div class="cell" onclick="cellClick(this, 3)"></div>
-            <div class="cell" onclick="cellClick(this, 4)"></div>
-            <div class="cell" onclick="cellClick(this, 5)"></div>
-            <div class="cell" onclick="cellClick(this, 6)"></div>
-            <div class="cell" onclick="cellClick(this, 7)"></div>
-            <div class="cell" onclick="cellClick(this, 8)"></div>
-        </div>
+      <div id="game-board">
+        <div class="cell" onclick="cellClick(this, 0)"></div>
+        <div class="cell" onclick="cellClick(this, 1)"></div>
+        <div class="cell" onclick="cellClick(this, 2)"></div>
+        <div class="cell" onclick="cellClick(this, 3)"></div>
+        <div class="cell" onclick="cellClick(this, 4)"></div>
+        <div class="cell" onclick="cellClick(this, 5)"></div>
+        <div class="cell" onclick="cellClick(this, 6)"></div>
+        <div class="cell" onclick="cellClick(this, 7)"></div>
+        <div class="cell" onclick="cellClick(this, 8)"></div>
+      </div>
 
-        <div class="side-panel-2" id="side-panel-2">
-            <label for="player2" id="saida2">Jogador 2:</label>
-            <input type="text" id="player2" placeholder="Nome do Jogador 2">
-            <span id="player2-wins">Vitórias: 0</span>
-            <button class="PvP" id="cadastro2" onclick="cadastrarJogador(2)">Cadastrar</button>
-        </div>
+      <div class="side-panel-2" id="side-panel-2">
+        <label for="player2" id="saida2">Jogador 2:</label>
+        <input type="text" id="player2" placeholder="Nome do Jogador 2" />
+        <span id="player2-wins">Vitórias: 0</span>
+        <button class="PvP" id="cadastro2" onclick="cadastrarJogador(2)">
+          Cadastrar
+        </button>
+      </div>
 
-        <div class="reset">
-            <button class="PvP" type="submit">Reiniciar</button>
-        </div>
+      <div class="reset">
+        <button class="PvP" type="submit">Reiniciar</button>
+      </div>
     </div>
     <script src="./assests/js/jogodavelha.js"></script>
-</body>
-
+  </body>
 </html>

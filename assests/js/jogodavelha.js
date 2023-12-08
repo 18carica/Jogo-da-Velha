@@ -13,11 +13,11 @@ let jogador2 = false;
 document.getElementById("game-board").style.visibility = 'hidden';
 // Função para cadastrar um jogador com base no número do jogador
 function cadastrarJogador(jogador) {
-        if (jogador == 1) {
+    if (jogador == 1) {
         var elementoJogador = document.getElementById("player1");
         document.getElementById("saida1").innerHTML = elementoJogador.value + ' | X';
         jogadorCadastrado = true;
-                elementoJogador.style.visibility = 'hidden';
+        elementoJogador.style.visibility = 'hidden';
         document.getElementById("cadastro1").style.visibility = 'hidden';
     }
     if (jogador == 2) {
@@ -28,62 +28,77 @@ function cadastrarJogador(jogador) {
     }
     mostrarJogadorAtual();
 }
-// Função para definir o modo de jogo e ajustar a visibilidade do jogador
 function ModoDeJogo(modoJogo) {
-    document.getElementById("side-panel-1").style.visibility = 'visible';
-    document.getElementById("side-panel-2").style.visibility = 'visible';
-    document.getElementById("game-board").style.visibility = 'visible';
-    var labelSaida = document.getElementById("saida2");
-    var elementoJogador = document.getElementById("player2");
+    var panel1 = document.getElementById("side-panel-1");
+    var panel2 = document.getElementById("side-panel-2");
+    var gameBoard = document.getElementById("game-board");
+
     if (modoJogo === 1) {
-        labelSaida.innerHTML = "Jogador 2:";
-        elementoJogador.style.visibility = 'visible';
+        panel1.style.visibility = 'visible';
+        panel2.style.visibility = 'visible';
+        gameBoard.style.visibility = 'visible';
+        document.getElementById("player2").style.visibility = 'visible';
         document.getElementById("cadastro2").style.visibility = 'visible';
-        jogador2 = true; // Jogador humano
-    }
-    if (modoJogo === 2) {
-        labelSaida.innerHTML = "Computador";
-        elementoJogador.style.visibility = 'hidden';
+        jogador2 = false; // Agora, jogador2 refere-se ao computador
+    } else if (modoJogo === 2) {
+        panel1.style.visibility = 'visible';
+        panel2.style.visibility = 'visible';
+        gameBoard.style.visibility = 'visible';
+        document.getElementById("saida2").innerHTML = "Computador";
+        document.getElementById("player2").style.visibility = 'hidden';
         document.getElementById('cadastro2').style.visibility = 'hidden';
-        jogador2 = false; // Jogador computador
+        jogador2 = true; // Agora, jogador2 refere-se a um segundo jogador humano
     }
 }
 // Função para exibir o jogador atual
 function mostrarJogadorAtual() {
     document.getElementById('jogadorAtual').innerHTML = 'Jogador atual: ' + currentPlayer;
 }
-// Função para lidar com um clique em uma célula do tabuleiro
-function cellClick(cell) {
-    if (cell.innerText === '' && !checkWinner()) {
+// Flag para rastrear se é a vez do jogador
+let playerTurn = true;
+
+function cellClick(cell, index) {
+    if (cell.innerText === '' && !checkWinner() && playerTurn) {
         cell.innerText = currentPlayer;
+
         if (checkWinner()) {
             updateWinner();
             resetBoard();
         } else {
-            if (currentPlayer === 'X') {
-                currentPlayer = 'O';
-            } else {
-                currentPlayer = 'X';
-                // PC
-                // makeComputerMove();
+            playerTurn = false; // Desabilita cliques durante a jogada do computador
+            // Verifica se está no modo "VS Computador" e é a vez do computador
+            if (jogador2 && currentPlayer === 'X') {
+                setTimeout(() => {
+                    makeComputerMove();
+                    playerTurn = true; // Habilita cliques após a jogada do computador
+                }, 1000);
+            } else if (!jogador2) {
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                mostrarJogadorAtual();
+                playerTurn = true; // Habilita cliques para o próximo jogador
             }
         }
     }
 }
-// Função para realizar a jogada do computador (ainda não funciona)
+// Função para realizar a jogada do computador
 function makeComputerMove() {
     const emptyCells = document.querySelectorAll('.cell:empty');
 
-    if (emptyCells.length > 0) {
+    if (emptyCells.length > 0 && !checkWinner()) {
         const randomIndex = Math.floor(Math.random() * emptyCells.length);
         const randomCell = emptyCells[randomIndex];
-        randomCell.innerText = currentPlayer;
+        randomCell.innerText = 'O';
+
         if (checkWinner()) {
-            updateWinner();
-            resetBoard();
+            setTimeout(() => {
+                mostrarJogadorAtual();
+                updateWinner();
+                resetBoard();
+            }, 500);
         } else {
-            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-            mostrarJogadorAtual(); // Adicionei para mostrar o jogador atual após a jogada do computador
+            currentPlayer = 'X';
+            mostrarJogadorAtual();
+            playerTurn = true;
         }
     }
 }
@@ -108,12 +123,23 @@ function checkWinner() {
 // Função para atualizar o placar do vencedor
 function updateWinner() {
     const winner = currentPlayer === 'X' ? 'O' : 'X';
-    if (winner === 'X') {
-        player2Wins++;
-        document.getElementById('player1-wins').innerText = `${player1Name}Vitórias ${player1Wins}`;
-    } else {
+
+    if (jogador2 && currentPlayer === 'X') {
+        // Modo "VS Computador" - jogador humano vence
         player1Wins++;
-        document.getElementById('player2-wins').innerText = `${player2Name}Vitórias ${player2Wins}`;
+        document.getElementById('player1-wins').innerText = `${player1Name} Vitórias: ${player1Wins}`;
+    } else if (jogador2 && currentPlayer === 'O') {
+        // Modo "VS Computador" - computador vence
+        player2Wins++;
+        document.getElementById('player2-wins').innerText = `Computador Vitórias: ${player2Wins}`;
+    } else if (!jogador2 && winner === 'X') {
+        // Modo 2 jogadores - jogador 1 vence
+        player1Wins++;
+        document.getElementById('player1-wins').innerText = `${player1Name} Vitórias: ${player1Wins}`;
+    } else if (!jogador2 && winner === 'O') {
+        // Modo 2 jogadores - jogador 2 vence
+        player2Wins++;
+        document.getElementById('player2-wins').innerText = `${player2Name} Vitórias: ${player2Wins}`;
     }
 }
 // Função para resetar o tabuleiro após uma partida
@@ -128,6 +154,5 @@ function resetPlacar() {
     document.getElementById('player1-wins').innerText = `${player1Name} Vitórias: ${player1Wins}`;
     document.getElementById('player2-wins').innerText = `${player2Name} Vitórias: ${player2Wins}`;
 }
-// Associe a função ao evento de clique do botão "Reiniciar"
+// Função "Reiniciar"
 document.querySelector('.reset button').addEventListener('click', resetPlacar);
-
